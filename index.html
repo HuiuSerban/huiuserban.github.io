@@ -1,230 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!-- This site was created in Webflow. http://www.webflow.com-->
+<!-- Last Published: Wed Jun 04 2014 17:23:52 GMT+0000 (UTC) -->
+<html data-wf-site="538eea3d695bbaf6141a7599">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Elemental X</title>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/mhgallery.js"></script>
-<script type="text/javascript" src="js/initgallery.js"></script>
-<script type="text/javascript">window.onerror = function(){return true;};</script>
-<link rel="stylesheet" href="js/mhgallery.css" type="text/css" />
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-<!-- Optional theme -->
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<script>
-$(function(){
-    $(".section").height($(window).height());
-});
-
-/**
- * SmoothScroll
- * This helper script created by DWUser.com.  Copyright 2012 DWUser.com.  
- * Dual-licensed under the GPL and MIT licenses.  
- * All individual scripts remain property of their copyrighters.
- * Date: 10-Sep-2012
- * Version: 1.0.1
- */
-if (!window['jQuery']) alert('The jQuery library must be included before the smoothscroll.js file.  The plugin will not work propery.');
-
-/**
- * jQuery.ScrollTo - Easy element scrolling using jQuery.
- * Copyright (c) 2007-2012 Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com
- * Dual licensed under MIT and GPL.
- * @author Ariel Flesler
- * @version 1.4.3.1
- */
-;(function($){var h=$.scrollTo=function(a,b,c){$(window).scrollTo(a,b,c)};h.defaults={axis:'xy',duration:parseFloat($.fn.jquery)>=1.3?0:1,limit:true};h.window=function(a){return $(window)._scrollable()};$.fn._scrollable=function(){return this.map(function(){var a=this,isWin=!a.nodeName||$.inArray(a.nodeName.toLowerCase(),['iframe','#document','html','body'])!=-1;if(!isWin)return a;var b=(a.contentWindow||a).document||a.ownerDocument||a;return/webkit/i.test(navigator.userAgent)||b.compatMode=='BackCompat'?b.body:b.documentElement})};$.fn.scrollTo=function(e,f,g){if(typeof f=='object'){g=f;f=0}if(typeof g=='function')g={onAfter:g};if(e=='max')e=9e9;g=$.extend({},h.defaults,g);f=f||g.duration;g.queue=g.queue&&g.axis.length>1;if(g.queue)f/=2;g.offset=both(g.offset);g.over=both(g.over);return this._scrollable().each(function(){if(e==null)return;var d=this,$elem=$(d),targ=e,toff,attr={},win=$elem.is('html,body');switch(typeof targ){case'number':case'string':if(/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(targ)){targ=both(targ);break}targ=$(targ,this);if(!targ.length)return;case'object':if(targ.is||targ.style)toff=(targ=$(targ)).offset()}$.each(g.axis.split(''),function(i,a){var b=a=='x'?'Left':'Top',pos=b.toLowerCase(),key='scroll'+b,old=d[key],max=h.max(d,a);if(toff){attr[key]=toff[pos]+(win?0:old-$elem.offset()[pos]);if(g.margin){attr[key]-=parseInt(targ.css('margin'+b))||0;attr[key]-=parseInt(targ.css('border'+b+'Width'))||0}attr[key]+=g.offset[pos]||0;if(g.over[pos])attr[key]+=targ[a=='x'?'width':'height']()*g.over[pos]}else{var c=targ[pos];attr[key]=c.slice&&c.slice(-1)=='%'?parseFloat(c)/100*max:c}if(g.limit&&/^\d+$/.test(attr[key]))attr[key]=attr[key]<=0?0:Math.min(attr[key],max);if(!i&&g.queue){if(old!=attr[key])animate(g.onAfterFirst);delete attr[key]}});animate(g.onAfter);function animate(a){$elem.animate(attr,f,g.easing,a&&function(){a.call(this,e,g)})}}).end()};h.max=function(a,b){var c=b=='x'?'Width':'Height',scroll='scroll'+c;if(!$(a).is('html,body'))return a[scroll]-$(a)[c.toLowerCase()]();var d='client'+c,html=a.ownerDocument.documentElement,body=a.ownerDocument.body;return Math.max(html[scroll],body[scroll])-Math.min(html[d],body[d])};function both(a){return typeof a=='object'?a:{top:a,left:a}}})(jQuery);
-
-/**
- * jQuery.LocalScroll
- * Copyright (c) 2007-2010 Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com
- * Dual licensed under MIT and GPL.
- * Date: 05/31/2010
- * @author Ariel Flesler
- * @version 1.2.8b
- **/
-;(function(b){function g(a,e,d){var h=e.hash.slice(1),f=document.getElementById(h)||document.getElementsByName(h)[0];if(f){a&&a.preventDefault();var c=b(d.target);if(!(d.lock&&c.is(":animated")||d.onBefore&&!1===d.onBefore(a,f,c))){d.stop&&c._scrollable().stop(!0);if(d.hash){var a=f.id==h?"id":"name",g=b("<a> </a>").attr(a,h).css({position:"absolute",top:b(window).scrollTop(),left:b(window).scrollLeft()});f[a]="";b("body").prepend(g);location=e.hash;g.remove();f[a]=h}c.scrollTo(f,d).trigger("notify.serialScroll",
-[f])}}}var i=location.href.replace(/#.*/,""),c=b.localScroll=function(a){b("body").localScroll(a)};c.defaults={duration:1E3,axis:"y",event:"click",stop:!0,target:window,reset:!0};c.hash=function(a){if(location.hash){a=b.extend({},c.defaults,a);a.hash=!1;if(a.reset){var e=a.duration;delete a.duration;b(a.target).scrollTo(0,a);a.duration=e}g(0,location,a)}};b.fn.localScroll=function(a){function e(){return!!this.href&&!!this.hash&&this.href.replace(this.hash,"")==i&&(!a.filter||b(this).is(a.filter))}
-a=b.extend({},c.defaults,a);return a.lazy?this.bind(a.event,function(d){var c=b([d.target,d.target.parentNode]).filter(e)[0];c&&g(d,c,a)}):this.find("a,area").filter(e).bind(a.event,function(b){g(b,this,a)}).end().end()}})(jQuery);
-
-// Initialize all .smoothScroll links
-jQuery(function($){ $.localScroll({filter:'.smoothScroll'}); });
-
-</script>
-<style>
-.h2
-{
-
-color:#FFFFFF;}
-
-a:hover{
-
-text-decoration:none;}
-#red.selection{
-
-}
-</style>
-
+  <meta charset="utf-8">
+  <title>Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/webflow.css">
+  <link rel="stylesheet" type="text/css" href="css/xperience.webflow.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ["Montserrat:400,700","Bitter:400,700,400italic"]
+      }
+    });
+  </script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
+  <link rel="apple-touch-icon" href="images/webclip-slate.png">
 </head>
-
-
- 
 <body>
-
-
-
-<div style="background-color:#ff9900;" class="section" id="yellow">
-   
-	<div class="col-xs-12" align="center" style="padding:0px;">
-		<div style="position:fixed; background-image:url(img/head.png); background-repeat:repeat-x;z-index:100000;" class="col-xs-12">
-		<div style="position:absolute;" class="col-sm-4">
-		
-		<div class="col-xs-2">
-		<a href="#yellow" class="smoothScroll">
-		
-		<h5  class="h2"  style="font-family: 'Poiret One', cursive; font-size:16px;"><span class="glyphicon glyphicon-home"></span>
-		<br />
-		Home</h5>
-		
-		</a>
-		</div>
-		
-		<div class="col-xs-2">
-		<a href="#red" class="smoothScroll">
-		
-		<h5  class="h2"  style="font-family: 'Poiret One', cursive; font-size:16px;"><span class="glyphicon glyphicon-user"></span>
-		<br />
-		About</h5>
-		
-		</a>
-		</div>
-		
-		<div class="col-xs-2">
-		
-		<a href="#blue" class="smoothScroll">
-		<h5  class="h2"  style="font-family: 'Poiret One', cursive; font-size:16px;"><span class="glyphicon glyphicon-file"></span>
-		<br />
-		Work</h5>
-		</a>
-		
-		</div>
-		
-		<div class="col-xs-2">
-		
-		<a href="#grey" class="smoothScroll">
-		<h5  class="h2"  style="font-family: 'Poiret One', cursive; font-size:16px;"><span class="glyphicon glyphicon-pencil"></span>
-		<br />
-		Portfolio</h5>
-		</a>
-		</div>
-		
-		<div class="col-xs-2">
-		
-		<a href="#green" class="smoothScroll">
-		<h5  class="h2"  style="font-family: 'Poiret One', cursive; font-size:16px;"><span class="glyphicon glyphicon-envelope"></span>
-		<br />
-		Contact</h5>
-		</a>
-		</div>
-		
-		</div>
-		<h1 style="color:#ffffff; font-family: 'Denk One', sans-serif;">Fluffy Game</h1>
-		
-		<div style="position:absolute;" class="col-xs-12">
-		<div align="center" >
-		<span style="font-family: 'Poiret One', cursive; color:#FFFFFF;background-color:transparent; padding-left:20px; padding-right:20px;"></span>
-		
-
+  <header class="navbar">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-4 w-clearfix">
+          <img class="logo" src="images/cooltext1592194705%20(3).png" width="178" alt="538f02f3695bbaf6141a7813_cooltext1592194705%20(3).png">
+          <div class="app-name"><span class="collor">Don't </span><span class="collor">stop </span><span class="collor">Gaming</span>
+          </div>
+        </div>
+        <div class="w-col w-col-8 nav-column">
+          <a class="collor" href="#email-form"></a><a class="nav-link" href="#presentation"><span class="collor" data-ix="new-interaction" style="">Home</span></a><a class="nav-link" href="#bored"><span class="collor" data-ix="new-interaction" style="">Bored ?</span></a><a class="nav-link"
+          href="http://store.steampowered.com/" target="_blank"><span class="collor" data-ix="new-interaction-2" style="">Steam&nbsp;</span></a>
+          <a class="collor" href="#email-form"></a><a class="nav-link" href="#contact"><span class="collor" data-ix="new-interaction" style="">Contact</span></a>
+        </div>
+      </div>
     </div>
-		</div>
-		<hr />
-		</div>
-		<div class="container" style="padding-top:8%;">
-		</div>
-		 </div>
-	</div>
-
-</div>
-
-  <!--SLIDER-->
-    <div class="container" style="text-align:center;position:absolute;">
-
-<!-- Copy to where you want to display the Slideshow -->
-<div id="mhgallery">TEST
-<style type="text/css"> #mhgallery img { display:none; } </style>
-<img src="images/bb356bdd52ab11911067011083610f0f.jpg" title="bb356bdd52ab11911067011083610f0f" />
-<img src="images/c53e4X1.jpg" title="c53e4X1" />
-<img src="images/Samyang-35mm-f1.4-Sample-26-650x280.jpg" title="Samyang-35mm-f1.4-Sample-26-650x280" />
-<img src="images/take-good-picture.jpg" title="take-good-picture" />
-<img src="images/wide-angle-lens.jpg" title="wide-angle-lens" />
-
-</div>
-<!-- End of Slideshow codes -->
-
-</div>
-
-<div style="background-color:#d44032;" class="section" id="red">
-<div style="display:block;text-align:left">
-<h2><span style="color:rgb(7,55,99)">Students</span></h2>
-<hr>
-<br>
-<div style="display:block;text-align:left"><a href="https://some.addres" imageanchor="1"><img align="left" src="http://imagini3.bestmusic.ro/image/1/640/0/60100522/Argatu---Geamparale-piesa-noua.jpg" border="0"></a>
-- Name<br>
-- Major<br>
-- Email<br>
-- Lattest</div>
-</div>
-<br>
-<br>
-</div>
-<div style="background-color:#44A5AC;" class="section" id="blue">
-
-
-
-</div>
-
-<style>
-
-#containter{
-position:fixed;
-top:100px;
-left:200px;
-}
-
-</style>
-<div id="ThatBox" style="position:relative;background-color:transparent;">
-<div id="container" style="width:500px">
-
-<div id="header" style="background-color:#8904B1;">
-<h1 style="margin-bottom:0;">Casuta de probe</h1></div>
-
-<div id="menu" style="background-color:#B18904;height:200px;width:100px;float:left;">
-<b>Categorie 1</b><br>
-Categorie 2<br>
-Categorie 3<br>
-Categorie 4</br>
-Altceva 5</div>
-
-<div id="content" style="background-color:#DF013A;height:200px;width:400px;float:left;">
-Se introduc ce date vrei ....</div>
-
-<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Casuta de proba</div>
-
-</div>
-
-</div>
-</div>
-<div style="background-color:#4c4c4c;" class="section" id="grey">
-<center>
-
-<SCRIPT>
+  </header>
+  <div class="hero section" id="presentation">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <img class="watch-dogs" src="images/watch-dogs-box-art-pc.jpg" width="695" alt="538eff5b695bbaf6141a77db_watch-dogs-box-art-pc.jpg">
+        </div>
+        <div class="w-col w-col-6 call-to-action">
+          <h1 class="hero-header">Buy your favorite games from Steam</h1>
+          <p class="hero-subtitle">Every day new sales await you. Come now and discover our great world of best seller games</p>
+          <div class="w-form">
+            <form id="email-form" name="email-form" data-name="Email Form">
+              <input class="w-button buton-steam" type="submit" value="" data-ix="new-interaction">
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-hidden-small w-hidden-tiny section grey" data-ix="new-interaction">
+    <div class="w-row">
+      <div class="w-col w-col-4">
+        <div class="w-container">
+          <ul class="lista-elemente">
+            <li class="element1">
+              <h1 class="watchdogsheader">Watch Dogs</h1>
+              <img src="images/elem1.jpg" width="100" alt="538f3ea308aa87f3140de8b4_elem1.jpg"><a class="linkdogs" href="http://store.steampowered.com/app/243470/" target="_blank">Only 59,99 EUROs</a>
+            </li>
+            <li class="element3">
+              <h1 class="wolfensteinheader">Wolfenstein</h1>
+              <img src="images/wolf2.png" width="100" alt="538f4039695bbaf6141a7fad_wolf2.png"><a class="linkwolf" href="http://store.steampowered.com/app/201810/" target="_blank">Only 49,99 EUROs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-col w-col-4">
+        <div class="w-container slide-containor">
+          <div class="w-slider proprietatislider" data-animation="outin" data-duration="3000" data-infinite="1" data-easing="ease-in" data-delay="6300" data-autoplay="1">
+            <div class="w-slider-mask">
+              <div class="w-slide slides"></div>
+              <div class="w-slide slides1"></div>
+              <div class="w-slide slide3"></div>
+            </div>
+            <div class="w-slider-arrow-left">
+              <div class="w-icon-slider-left"></div>
+            </div>
+            <div class="w-slider-arrow-right">
+              <div class="w-icon-slider-right"></div>
+            </div>
+            <div class="w-slider-nav w-shadow w-round"></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-col w-col-4">
+        <div class="w-embed w-video" style="padding-top: 56.20608899297424%;">
+          <iframe class="embedly-embed" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FeeAjkbNq4xI%3Ffeature%3Doembed&amp;url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeeAjkbNq4xI&amp;image=http%3A%2F%2Fi1.ytimg.com%2Fvi%2FeeAjkbNq4xI%2Fhqdefault.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=youtube"
+          scrolling="no" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="boredsection" id="bored">
+    <div class="w-row">
+      <div class="w-col w-col-6">
+        <h1 class="boredtodeath">Got bored ?</h1>
+        <p class="paragraf">If so, then stop here and have a break playing our simple but pretty games like Tic-Tac-Toe or .....</p>
+      </div>
+      <div class="w-col w-col-3">
+        <div class="w-container">
+          <div class="tictactoe">
+		  <center>
+		  
+		  <SCRIPT>
 
 //if IE4/NS6, apply style
 if (document.all||document.getElementById){
@@ -910,51 +802,43 @@ function resetter()
 <INPUT TYPE="button" NAME="sqr8" class="tictac" value="     " onClick="if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 1; vari(); check();} else if(document.tic.sqr8.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr8.value = ' O '; sqr8T = 1; turn = 1; vari(); player1Check()} drawCheck()">
 <INPUT TYPE="button" NAME="sqr9" class="tictac" value="     " onClick="if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 1; vari(); check();} else if(document.tic.sqr9.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr9.value = ' O '; sqr9T = 1; turn = 1; vari(); player1Check()} drawCheck()">
 </form>
-
-</center>
-
-</div>
-
-<div style="background-color:#8bc14b;" class="section" id="green">
-<style>
-      #map_canvas {
-	  float:left;
-	  position:fixed;
-        width: 500px;
-        height: 400px;
-      }
-    </style>
-	
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script>
-      function initialize() {
-        var map_canvas = document.getElementById('map_canvas');
-        var map_options = {
-          center: new google.maps.LatLng(44.435589, 26.100908),
-          zoom: 17,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(map_canvas, map_options)
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-	
-  </head>
-  <body>
-  	<center><h2>Contact</h2>
-    <div id="map_canvas"></div>
-	<p>Adresa<br>
-	<p>Facebook: <br>
-	<p>Si alte nebunii de genul Tip: The biggest advantage of using CSS is that, if you place the CSS code in an external style sheet, your site becomes MUCH EASIER to maintain. You can change the layout of all your pages by editing one file. To learn more about CSS, study our CSS tutorial.
-
-Tip: Because advanced layouts take time to create, a quicker option is to use a template. Search Google for free website templates (these are pre-built website layouts you can use and customize).<br>
-	</center>
-  </body>
-  
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+		  
+		  </center>
+		  </div>
+        </div>
+      </div>
+      <div class="w-col w-col-3"></div>
+    </div>
+  </div>
+  <div class="section grey footer" id="contact">
+    <div class="w-container">
+      <h1>Contact us</h1>
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <div class="w-widget w-widget-map" data-widget-latlng="47.610115,-122.200151" data-widget-style="roadmap" data-widget-zoom="14"></div>
+        </div>
+        <div class="w-col w-col-6">
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <a class="w-inline-block facebooklinkblock" href="https://www.facebook.com/Steam" target="_blank"></a>
+            </div>
+            <div class="w-col w-col-6">
+              <p>Look for us on Facebook, check in with everyone else and contact us for any problem.</p>
+            </div>
+          </div>
+          <div class="w-widget w-widget-gplus">
+            <div class="g-plusone" data-href="https://plus.google.com/113796640741816471268/posts" data-size="standard" data-annotation="bubble" data-width="120" data-recommendations="false" id="___plusone_10" style="width: 106px; height: 24px; text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; background: transparent;"></div>
+          </div>
+          <div class="w-widget w-widget-twitter">
+            <iframe src="https://platform.twitter.com/widgets/tweet_button.html#url=https%3A%2F%2Ftwitter.com%2FSteam_Support&amp;counturl=twitter.com%2FSteam_Support&amp;text=Hey%20guys....&amp;count=horizontal&amp;size=l&amp;dnt=true" scrolling="no" frameborder="0"
+            allowtransparency="true" style="border: none; overflow: hidden; width: 138px; height: 28px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/webflow.js"></script>
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 </html>
