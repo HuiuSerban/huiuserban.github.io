@@ -56,6 +56,7 @@ p {
   color: #bfd627;
   font-size: 15px;
   line-height: 23px;
+  text-align: justify;
 }
 .button {
   display: inline-block;
@@ -156,7 +157,7 @@ p {
   font-family: Montserrat, sans-serif;
   color: #120606;
   font-size: 42px;
-  text-shadow: rgba(0, 0, 0, 0.21) 0px 2px 0px;
+  text-shadow: rgba(0, 0, 0, 0.2) 0px 2px 0px;
 }
 .hero-subtitle {
   margin-bottom: 20px;
@@ -357,12 +358,70 @@ p {
 .boredsection {
   height: 300px;
   background-color: #b3aaaa;
+  color: black;
 }
 .boredtodeath {
   color: black;
 }
 .paragraf {
   color: black;
+}
+.googleplus {
+  width: 129px;
+  height: 64px;
+  background-image: url('../images/Google-Plus-Logo.png');
+  background-size: contain;
+}
+.googleparagraph {
+  color: #27d690;
+  text-align: justify;
+}
+.twitterlink {
+  width: 161px;
+  height: 63px;
+  background-image: url('../images/twitter-logo.png');
+  background-size: contain;
+}
+.twitterparagraph {
+  color: #e39724;
+}
+.paragraftwiter {
+  color: #d67b27;
+  font-style: normal;
+  text-align: justify;
+}
+.submit-label {
+  color: #1fdbb6;
+}
+.label-field {
+  color: #1fdbb6;
+}
+.successtyle {
+  color: #b3aaaa;
+}
+.successs {
+  background-color: #b3aaaa;
+  color: #0d0505;
+}
+.paragraf-succes {
+  color: #050501;
+}
+.errormessage {
+  background-color: #b3aaaa;
+}
+.tabsstyle {
+  background-color: #f80;
+}
+.tabsstyle.w--current {
+  background-color: #f80;
+}
+.stilltable {
+  background-color: #252b2b;
+}
+.steamlinking {
+  width: 208px;
+  background-image: url('../images/steam_button.jpg');
+  background-size: contain;
 }
 @media (max-width: 991px) {
   p {

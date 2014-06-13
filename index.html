@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Wed Jun 04 2014 17:23:52 GMT+0000 (UTC) -->
+<!-- Last Published: Sun Jun 08 2014 15:29:08 GMT+0000 (UTC) -->
 <html data-wf-site="538eea3d695bbaf6141a7599">
 <head>
   <meta charset="utf-8">
@@ -32,9 +32,9 @@
           </div>
         </div>
         <div class="w-col w-col-8 nav-column">
-          <a class="collor" href="#email-form"></a><a class="nav-link" href="#presentation"><span class="collor" data-ix="new-interaction" style="">Home</span></a><a class="nav-link" href="#bored"><span class="collor" data-ix="new-interaction" style="">Bored ?</span></a><a class="nav-link"
-          href="http://store.steampowered.com/" target="_blank"><span class="collor" data-ix="new-interaction-2" style="">Steam&nbsp;</span></a>
-          <a class="collor" href="#email-form"></a><a class="nav-link" href="#contact"><span class="collor" data-ix="new-interaction" style="">Contact</span></a>
+          <a class="collor" href="#email-form"></a><a class="nav-link" href="#presentation"><span class="collor" data-ix="new-interaction">Home</span></a><a class="nav-link" href="#bored"><span class="collor" data-ix="new-interaction">Bored ?</span></a><a class="nav-link" href="http://store.steampowered.com/"
+          target="_blank"><span class="collor" data-ix="new-interaction-2">Steam&nbsp;</span></a>
+          <a class="collor" href="#email-form"></a><a class="nav-link" href="#contact"><span class="collor" data-ix="new-interaction">Contact</span></a>
         </div>
       </div>
     </div>
@@ -48,17 +48,7 @@
         <div class="w-col w-col-6 call-to-action">
           <h1 class="hero-header">Buy your favorite games from Steam</h1>
           <p class="hero-subtitle">Every day new sales await you. Come now and discover our great world of best seller games</p>
-          <div class="w-form">
-            <form id="email-form" name="email-form" data-name="Email Form">
-              <input class="w-button buton-steam" type="submit" value="" data-ix="new-interaction">
-            </form>
-            <div class="w-form-done">
-              <p>Thank you! Your submission has been received!</p>
-            </div>
-            <div class="w-form-fail">
-              <p>Oops! Something went wrong while submitting the form :(</p>
-            </div>
-          </div>
+          <a class="w-inline-block steamlinking" href="http://store.steampowered.com/" target="_blank"></a>
         </div>
       </div>
     </div>
@@ -109,11 +99,17 @@
     <div class="w-row">
       <div class="w-col w-col-6">
         <h1 class="boredtodeath">Got bored ?</h1>
-        <p class="paragraf">If so, then stop here and have a break playing our simple but pretty games like Tic-Tac-Toe or .....</p>
+        <p class="paragraf">If so, then stop here and have a break playing our simple but pretty game : Tic-Tac-Toe.
+          <br>
+          <br>RULES:
+          <br>
+          <br>X always goes first. Players alternate placing Xs and Os on the board until either &nbsp;one player has three in a row, horizontally, vertically or diagonally; or all nine squares are filled. If a player is able to draw three Xs or three Os
+          in a row, that player wins. If all nine squares are filled and neither player has three in a row, the game is a draw</p>
       </div>
       <div class="w-col w-col-3">
         <div class="w-container">
           <div class="tictactoe">
+		  
 		  <center>
 		  
 		  <SCRIPT>
@@ -804,10 +800,17 @@ function resetter()
 </form>
 		  
 		  </center>
+		  
 		  </div>
         </div>
       </div>
       <div class="w-col w-col-3"></div>
+    </div>
+    <div class="w-tabs" data-duration-in="300" data-duration-out="100">
+      <div class="w-tab-content">
+        <div class="w-tab-pane stilltable" data-w-tab="Tab 2"></div>
+        <div class="w-tab-pane" data-w-tab="Tab 3"></div>
+      </div>
     </div>
   </div>
   <div class="section grey footer" id="contact">
@@ -826,12 +829,37 @@ function resetter()
               <p>Look for us on Facebook, check in with everyone else and contact us for any problem.</p>
             </div>
           </div>
-          <div class="w-widget w-widget-gplus">
-            <div class="g-plusone" data-href="https://plus.google.com/113796640741816471268/posts" data-size="standard" data-annotation="bubble" data-width="120" data-recommendations="false" id="___plusone_10" style="width: 106px; height: 24px; text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; background: transparent;"></div>
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <a class="w-inline-block googleplus" href="https://plus.google.com/113796640741816471268/posts" target="_blank"></a>
+            </div>
+            <div class="w-col w-col-6">
+              <p class="googleparagraph"><span class="googleparagraph">Meet new people, join game groups, <span>form </span>clans, chat in-game and more!</span>
+              </p>
+            </div>
           </div>
-          <div class="w-widget w-widget-twitter">
-            <iframe src="https://platform.twitter.com/widgets/tweet_button.html#url=https%3A%2F%2Ftwitter.com%2FSteam_Support&amp;counturl=twitter.com%2FSteam_Support&amp;text=Hey%20guys....&amp;count=horizontal&amp;size=l&amp;dnt=true" scrolling="no" frameborder="0"
-            allowtransparency="true" style="border: none; overflow: hidden; width: 138px; height: 28px;"></iframe>
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <a class="w-inline-block twitterlink" href="https://twitter.com/Steam_Support" target="_blank"></a>
+            </div>
+            <div class="w-col w-col-6">
+              <p class="paragraftwiter">Follow us here for news on the latest releases and special promotions.</p>
+            </div>
+          </div>
+          <div class="w-form">
+            <form class="successtyle" name="email-form-2" data-name="Email Form 2" action="http://huiu.serban@live.com">
+              <label class="submit-label" for="name">Name:</label>
+              <input class="w-input" id="name" type="text" placeholder="Enter your name" name="name" data-name="Name" required="required">
+              <label class="label-field" for="email">Email Address:</label>
+              <input class="w-input" id="email" type="email" placeholder="Enter your email address" name="email" data-name="Email" required="required">
+              <input class="w-button apasa" type="submit" value="Submit" data-wait="Please wait...">
+            </form>
+            <div class="w-form-done successs">
+              <p class="paragraf-succes">Thank you! Your submission has been sent !!!</p>
+            </div>
+            <div class="w-form-fail errormessage">
+              <p class="successs">Oops! Something went wrong during submition.</p>
+            </div>
           </div>
         </div>
       </div>
