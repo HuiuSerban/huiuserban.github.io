@@ -4,7 +4,7 @@
 <html data-wf-site="538eea3d695bbaf6141a7599">
 <head>
   <meta charset="utf-8">
-  <title>Slate Template</title>
+  <title>Xperience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -785,6 +785,13 @@ function resetter()
 {
   reset()
 }
+
+
+
+
+
+
+
 </SCRIPT>
 
 <FORM NAME="tic">
@@ -798,6 +805,9 @@ function resetter()
 <INPUT TYPE="button" NAME="sqr8" class="tictac" value="     " onClick="if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 1; vari(); check();} else if(document.tic.sqr8.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr8.value = ' O '; sqr8T = 1; turn = 1; vari(); player1Check()} drawCheck()">
 <INPUT TYPE="button" NAME="sqr9" class="tictac" value="     " onClick="if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 1; vari(); check();} else if(document.tic.sqr9.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr9.value = ' O '; sqr9T = 1; turn = 1; vari(); player1Check()} drawCheck()">
 </form>
+
+
+<canvas id="theCanvas" width="300" height="300" style="position:absolute; left: 360px; top: 0px; allign: center;">
 		  
 		  </center>
 		  
@@ -868,5 +878,108 @@ function resetter()
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  
+  <script>
+  			
+			// Constante! Joaca-te cu ele, experimenteaza.
+			var maxAge = 50; // Dupa cati pasi vom sterge o particula.
+			var stepInterval = 1000 / 30; // Pentru 30 de cadre pe secunda, alegem un interval de 1000/30 milisecunde
+			var colorMode = 3; // Sunt 3 moduri de culoare: 1, 2 si 3.
+		
+			// Variabile
+			var particles = [];
+			var canvas = document.getElementById('theCanvas'); // Asta e elementul <canvas>
+			var ctx = canvas.getContext('2d'); // Asta e obiectul prin care desenam
+			var centerX = canvas.width / 2;
+			var centerY = canvas.height / 2;
+			
+			function step() {
+				// Stergem canvas-ul, il facem negru				
+				ctx.fillStyle = "#b3aaaa";
+				ctx.fillRect(
+					0,
+					0,
+					canvas.width,
+					canvas.height
+				);
+				
+				// "Miscam" fiecare particula (ii calculam noua pozitie)				
+				for (var i = 0; i < particles.length; i++) {
+					var p = particles[i];
+					
+					p.x += p.ix * p.speed;
+					p.y += p.iy * p.speed;
+				}
+				
+				// Desenam fiecare particula
+				for (var i = 0; i < particles.length; i++) {
+					var p = particles[i];
+					
+					var red, green, blue, alpha;
+					switch (colorMode) {
+						case 1:
+							// Alegem o culoare bazata pe SPEED. Cu cat e mai rapida, cu atat e mai alba.
+							red = 100 + Math.round(p.speed) * 30;
+							green = 0;
+							blue = 0;
+							alpha = 1;
+							break;
+							
+						case 2:
+							// Alegem o culoare bazata pe AGE. Cu cat e mai veche, cu atat e mai transparenta.
+							red = 200;
+							green = 150;
+							blue = 20;
+							alpha = (maxAge - p.age) / maxAge;
+							break;
+							
+						case 3:
+							// Alegem o culoare random.
+							red = Math.round(Math.random() * 256);
+							green = Math.round(Math.random() * 256);
+							blue = Math.round(Math.random() * 256);
+							alpha = Math.random();
+							break;
+					}
+					ctx.fillStyle = "rgba(" + red + ", " + green + ", " + blue + ", " + alpha + ")";
+					
+					ctx.beginPath();
+					ctx.arc(
+						p.x,
+						p.y,
+						p.size,
+						0,
+						Math.PI * 2,
+						true
+					);
+					ctx.fill();
+				}
+					
+				// Stergem particule vechi/expirate				
+				for (var i = 0; i < particles.length; i++) {
+					var p = particles[i];
+										
+					if (p.age > maxAge) {
+						particles.splice(i, 1);
+					}
+					p.age++;
+				}
+			
+				// Generam particule noi in centrul canvas-ului.
+				var p = {
+					x: centerX,
+					y: centerY,
+					ix: Math.random() - 0.5, // Inertie random pe axa X
+					iy: Math.random() - 0.5, // Idem pe Y
+					speed: Math.random() * 9 + 1, // Marime intre 1 si 10
+					size: Math.random() * 13 + 2, // Viteza intre 2 si 15
+					age: 0
+				}
+				particles.push(p);
+			}
+			
+			setInterval(step, stepInterval);
+		</script>
+
 </body>
 </html>
